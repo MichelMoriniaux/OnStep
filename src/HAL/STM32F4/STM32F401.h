@@ -15,18 +15,19 @@
 #define sei() interrupts()
 
 // New symbols for the Serial ports so they can be remapped if necessary -----------------------------
-#define SerialA Serial
+HardwareSerial HWSerial1(PA10, PA9); // RX1, TX1
+#define SerialA HWSerial1
 // SerialA is always enabled, SerialB and SerialC are optional
 
 HardwareSerial HWSerial2(PA3, PA2); // RX2, TX2
 #define SerialB HWSerial2
 #define HAL_SERIAL_B_ENABLED
 
-HardwareSerial HWSerial1(PA10, PA9); // RX1, TX1
-#if SERIAL_C_BAUD_DEFAULT != OFF
-  #define SerialC HWSerial1
-  #define HAL_SERIAL_C_ENABLED
-#endif
+// HardwareSerial HWSerial1(PA10, PA9); // RX1, TX1
+// #if SERIAL_C_BAUD_DEFAULT != OFF
+//   #define SerialC HWSerial1
+//   #define HAL_SERIAL_C_ENABLED
+// #endif
   
 // HardwareSerial HWSerial1(PA10, PA9);  // RX1, TX1
 // HardwareSerial HWSerial2(PA3, PA2);   // RX2, TX2

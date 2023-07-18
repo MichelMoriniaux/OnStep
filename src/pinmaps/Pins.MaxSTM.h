@@ -10,24 +10,24 @@
 
 // The multi-purpose pins (Aux3..Aux8 can be analog pwm/dac if supported)
 #define Aux0                PB12     // Status LED
-#define Aux2                PA13     // PPS
-#define Aux3                PB13     // Home SW
-#define Aux4                PB14     // OneWire, Home SW
+#define Aux2                PC14     // PPS
+// #define Aux3                PB13     // Home SW
+// #define Aux4                PB14     // OneWire, Home SW
 #define Aux5                 PA9     // TX1 
-#define Aux6                PA10     // RX1
-#define Aux7                PB15     // Limit SW
-#define Aux8                 PA8     // Status2 LED, Reticle LED
+#define Aux6                 PA10     // RX1
+// #define Aux7                PB15     // Limit SW
+// #define Aux8                PA8      // Status2 LED, Reticle LED
 
 // Misc. pins
-#ifndef OneWirePin
-  #define OneWirePin        Aux4     // Default Pin for OneWire bus (note: this pin has a 0.1uF capacitor that must be removed for OneWire to function)
-#endif
-#define AddonBootModePin     PB0     // ESP8266 GPIO0 (Dir2)
-#define AddonResetPin       Aux2     // ESP8266 RST
+// #ifndef OneWirePin
+//   #define OneWirePin        Aux4     // Default Pin for OneWire bus (note: this pin has a 0.1uF capacitor that must be removed for OneWire to function)
+// #endif
+// #define AddonBootModePin     PB0     // ESP8266 GPIO0 (Dir2)
+// #define AddonResetPin       Aux2     // ESP8266 RST
 
 // The PEC index sense is a logic level input, resets the PEC index on rising edge then waits for 60 seconds before allowing another reset
-#define PecPin               PB1
-#define AnalogPecPin         PB1     // PEC Sense, analog or digital
+// #define PecPin               PB1
+// #define AnalogPecPin         PB1     // PEC Sense, analog or digital
 
 // The status LED is a two wire jumper with a 10k resistor in series to limit the current to the LED
 #define LEDnegPin           Aux0     // Drain
@@ -35,19 +35,19 @@
 #define ReticlePin          Aux8     // Drain
 
 // For a piezo buzzer
-#define TonePin             PA14     // Tone
+#define TonePin             PC15     // Tone
 
 // The PPS pin is a 3.3V logic input, OnStep measures time between rising edges and adjusts the internal sidereal clock frequency
-#ifdef MAXSTM_AUX0_PPS
-  #define PpsPin            Aux0     // PPS time source, GPS for example (MaxSTM version 3.6)
-#else
+// #ifdef MAXSTM_AUX0_PPS
+//   #define PpsPin            Aux0     // PPS time source, GPS for example (MaxSTM version 3.6)
+// #else
   #define PpsPin            Aux2     // PPS time source, GPS for example (MaxSTM version 3.61 and later)
-#endif
+// #endif
 
-#define LimitPin            Aux7     // The limit switch sense is a logic level input normally pull high (2k resistor,) shorted to ground it stops gotos/tracking
+// #define LimitPin            Aux7     // The limit switch sense is a logic level input normally pull high (2k resistor,) shorted to ground it stops gotos/tracking
 
 // Axis1 RA/Azm step/dir driver
-#define Axis1_EN             OFF     // No ENable pin control
+#define Axis1_EN             PB13     // No ENable pin control
 #define Axis1_M0             PA7     // SPI MOSI
 #define Axis1_M0PORT       GPIOA
 #define Axis1_M0BIT   GPIO_PIN_7
@@ -67,11 +67,11 @@
 #define Axis1_DirPORT      GPIOB
 #define Axis1_DirBIT  GPIO_PIN_2
 #define Axis1_DECAY     Axis1_M2     // Decay mode
-#define Axis1_FAULT         Aux1     // SPI MISO/Fault (or ESP8266 GPIO0 on MaxPCB)
-#define Axis1_HOME          Aux3     // Sense home position Axis1
+// #define Axis1_FAULT         Aux1     // SPI MISO/Fault (or ESP8266 GPIO0 on MaxPCB)
+// #define Axis1_HOME          Aux3     // Sense home position Axis1
 
 // Axis2 Dec/Alt step/dir driver
-#define Axis2_EN             OFF     // No ENable pin control
+#define Axis2_EN            PB14     // No ENable pin control
 #define Axis2_M0             PA7     // SPI MOSI
 #define Axis2_M0PORT       GPIOA
 #define Axis2_M0BIT   GPIO_PIN_7
@@ -91,35 +91,35 @@
 #define Axis2_DirPORT      GPIOB
 #define Axis2_DirBIT  GPIO_PIN_0
 #define Axis2_DECAY     Axis2_M2     // Decay mode
-#define Axis2_FAULT         Aux2
-#define Axis2_HOME          Aux4     // Sense home position
+// #define Axis2_FAULT         Aux2
+// #define Axis2_HOME          Aux4     // Sense home position
 
-// For rotator stepper driver
-#define Axis3_EN             OFF     // No ENable pin control
-#define Axis3_M0             PA7     // SPI MOSI
-#define Axis3_M1             PA5     // SPI SCK
-#define Axis3_M2            PC15     // SPI CS
-#define Axis3_M3             PA6     // SPI MISO
-#define Axis3_STEP           PB8     // Step
-#define Axis3_DIR           PC13     // Dir
+// // For rotator stepper driver
+// #define Axis3_EN             OFF     // No ENable pin control
+// #define Axis3_M0             PA7     // SPI MOSI
+// #define Axis3_M1             PA5     // SPI SCK
+// #define Axis3_M2            PC15     // SPI CS
+// #define Axis3_M3             PA6     // SPI MISO
+// #define Axis3_STEP           PB8     // Step
+// #define Axis3_DIR           PC13     // Dir
 
-// For focuser1 stepper driver
-#define Axis4_EN             OFF     // No ENable pin control
-#define Axis4_M0             PA7     // SPI MOSI
-#define Axis4_M1             PA5     // SPI SCK
-#define Axis4_M2            PC14     // SPI CS
-#define Axis4_M3             PA6     // SPI MISO
-#define Axis4_STEP           PB9     // Step
-#define Axis4_DIR           PC13     // Dir
+// // For focuser1 stepper driver
+// #define Axis4_EN             OFF     // No ENable pin control
+// #define Axis4_M0             PA7     // SPI MOSI
+// #define Axis4_M1             PA5     // SPI SCK
+// #define Axis4_M2            PC14     // SPI CS
+// #define Axis4_M3             PA6     // SPI MISO
+// #define Axis4_STEP           PB9     // Step
+// #define Axis4_DIR           PC13     // Dir
 
-// For focuser2 stepper driver
-#define Axis5_EN             OFF     // No ENable pin control
-#define Axis5_M0             PA7     // SPI MOSI
-#define Axis5_M1             PA5     // SPI SCK
-#define Axis5_M2            PC15     // SPI CS
-#define Axis5_M3             PA6     // SPI MISO
-#define Axis5_STEP           PB8     // Step
-#define Axis5_DIR           PC13     // Dir
+// // For focuser2 stepper driver
+// #define Axis5_EN             OFF     // No ENable pin control
+// #define Axis5_M0             PA7     // SPI MOSI
+// #define Axis5_M1             PA5     // SPI SCK
+// #define Axis5_M2            PC15     // SPI CS
+// #define Axis5_M3             PA6     // SPI MISO
+// #define Axis5_STEP           PB8     // Step
+// #define Axis5_DIR           PC13     // Dir
 
 // ST4 interface
 #define ST4RAw              PA15     // ST4 RA- West

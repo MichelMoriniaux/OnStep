@@ -12,7 +12,7 @@
 
 // I2C EEPROM Address
 #if !defined(I2C_EEPROM_ADDRESS)
-  #define I2C_EEPROM_ADDRESS 0x57
+  #define I2C_EEPROM_ADDRESS 0x50 //0x50 for JTW trident
 #endif
 
 // Time to wait after write page is requested, in milliseconds
