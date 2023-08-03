@@ -15,7 +15,7 @@
 #define sei() interrupts()
 
 // New symbols for the Serial ports so they can be remapped if necessary -----------------------------
-#define SerialA Serial
+#define SerialA HWSerial1
 // SerialA is always enabled, SerialB and SerialC are optional
 
 HardwareSerial HWSerial2(PA3, PA2); // RX2, TX2
